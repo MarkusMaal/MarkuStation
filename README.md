@@ -2,7 +2,7 @@
 
 Unikaalse näoga mängude käivitaja. Käivitamisel esitatakse juhuslikult üks 4-st MarkuStation-i introst.
 
-Eeldab, et arvuti vastab Markuse asjad süsteemide nõuetele ja ka seda et OS on paigaldatud C: kettale.
+Eeldab, et arvuti vastab Markuse asjad süsteemide nõuetele.
 
 Kasutuselolevad failid:
 - C:\mas\ms_display.txt - Mitme ekraani reşiimi valik

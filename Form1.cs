@@ -19,6 +19,7 @@ namespace MarkuStation
         bool forcespecial = false;
         bool dev = false;
         int clickstate = 0;
+        string c = Environment.GetEnvironmentVariable("HOMEDRIVE"); // generally C:
         public Form1()
         {
             InitializeComponent();
@@ -39,22 +40,22 @@ namespace MarkuStation
             }
             if (v == 13)
             {
-                File.WriteAllBytes("C:\\mas\\ms.wmv", Properties.Resources.MarkuStation_creepy);
-                axWMP.URL = "C:\\mas\\ms.wmv";
+                File.WriteAllBytes(c + "\\mas\\ms.wmv", Properties.Resources.MarkuStation_creepy);
+                axWMP.URL = c + "\\mas\\ms.wmv";
                 startuplabel.Text = "Starting MarkuStation 2016...";
                 return;
             }
             else if (v == 26)
             {
-                File.WriteAllBytes("C:\\mas\\ms.wmv", Properties.Resources.MarkuStation_special);
-                axWMP.URL = "C:\\mas\\ms.wmv";
+                File.WriteAllBytes(c + "\\mas\\ms.wmv", Properties.Resources.MarkuStation_special);
+                axWMP.URL = c + "\\mas\\ms.wmv";
                 startuplabel.Text = "Starting MarkuStation 2016...";
                 return;
             }
             else if (v <= 50)
             {
-                File.WriteAllBytes("C:\\mas\\ms.wmv", Properties.Resources.MarkuStation_original);
-                axWMP.URL = "C:\\mas\\ms.wmv";
+                File.WriteAllBytes(c + "\\mas\\ms.wmv", Properties.Resources.MarkuStation_original);
+                axWMP.URL = c + "\\mas\\ms.wmv";
                 startuplabel.Text = "Starting MarkuStation 2015...";
                 startuplabel.Visible = false;
                 llabel.Visible = false;
@@ -62,8 +63,8 @@ namespace MarkuStation
             }
             else if (v > 50)
             {
-                File.WriteAllBytes("C:\\mas\\ms.wmv", Properties.Resources.MarkuStation_2016);
-                axWMP.URL = "C:\\mas\\ms.wmv";
+                File.WriteAllBytes(c + "\\mas\\ms.wmv", Properties.Resources.MarkuStation_2016);
+                axWMP.URL = c + "\\mas\\ms.wmv";
                 startuplabel.Text = "Starting MarkuStation 2016...";
                 return;
             }
@@ -87,7 +88,7 @@ namespace MarkuStation
             {
                 //If playback stops, then hide player and show everything else
                 axWMP.Visible = false;
-                File.Delete("C:\\mas\\ms.wmv");
+                File.Delete(c + "\\mas\\ms.wmv");
                 letterM.Visible = true;
                 letterS.Visible = true;
                 ms.Visible = true;
@@ -101,7 +102,7 @@ namespace MarkuStation
                 postimer.Enabled = false;
                 //Loads data
                 if (dev == true) { MessageBox.Show("Decoding MarkuStation data"); }
-                string fl=File.ReadAllText("C:\\mas\\ms_games.txt", Encoding.ASCII);
+                string fl=File.ReadAllText(c + "\\mas\\ms_games.txt", Encoding.ASCII);
                 GameList.Items.AddRange(fl.Split('\n'));
                 int il = 1;
                 if (dev == true) { MessageBox.Show("Starting while loop"); }
@@ -142,7 +143,7 @@ namespace MarkuStation
                     }
                 }
                 GameList.Items.Clear();
-                string flu = File.ReadAllText("C:\\mas\\ms_exec.txt", Encoding.ASCII);
+                string flu = File.ReadAllText(c + "\\mas\\ms_exec.txt", Encoding.ASCII);
                 GameList.Items.AddRange(flu.Split('\n'));
                 if (dev == true) { MessageBox.Show("foreach loop ended"); }
                 backgroundLoop.Enabled = true;
@@ -229,15 +230,15 @@ namespace MarkuStation
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /*private void button2_Click(object sender, EventArgs e)
         {
-            launchGame("C:\\Program Files\\TmUnitedForever\\TmForever.exe", "C:\\Program Files\\TmUnitedForever");
+            launchGame(c + "\\Program Files\\TmUnitedForever\\TmForever.exe", c + "\\Program Files\\TmUnitedForever");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            launchGame("C:\\Users\\Markus Maal\\AppData\\Roaming\\Roaming\\.minecraft\\TLauncher.exe", "C:\\Users\\Markus Maal\\AppData\\Roaming\\Roaming\\.minecraft");
-        }
+            launchGame(c + "\\Users\\Markus Maal\\AppData\\Roaming\\Roaming\\.minecraft\\TLauncher.exe", c + "\\Users\\Markus Maal\\AppData\\Roaming\\Roaming\\.minecraft");
+        }*/
 
         public string launchGame(string fn, string wd)
         {
