@@ -27,6 +27,20 @@ namespace MarkuStation
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (!File.Exists(c + "\\mas\\ms_games.txt") || !File.Exists(c + "\\mas\\ms_exec.txt"))
+            {
+                postimer.Enabled = false;
+                MessageBox.Show("config on puudu!", "MarkuStation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+            if (axWMP == null)
+            {
+                postimer.Enabled = false;
+                MessageBox.Show("WMPLib DLL-id on puudu!", "MarkuStation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
             //Intro randomizer
             Random rnd = new Random();
             int v = rnd.Next(100);

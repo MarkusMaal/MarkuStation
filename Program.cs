@@ -13,8 +13,14 @@ namespace MarkuStation
         [STAThread]
         static void Main()
         {
-            Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new Form1());
+            try
+            {
+                Application.SetCompatibleTextRenderingDefault(true);
+                Application.Run(new Form1());
+            } catch
+            {
+                return;
+            }
         }
     }
 }
